@@ -22,6 +22,7 @@
 from __future__ import division
 import numpy as np
 from os.path import dirname
+from ..vtypes import continuous
 from ..utils import standard_properties, standard_classification_loader
 
 __all__ = ['load'] + standard_properties
@@ -39,6 +40,9 @@ url = 'http://archive.ics.uci.edu/ml/datasets/Wine'
 data_source = 'UCI'
 label_names = [1,2,3]
 missing_values = False
+value_types = [
+    continuous('_%s' % i) for i in xrange(13)
+    ]
 
 _winedatafile = dirname(__file__)+'/data/wine.data'
 

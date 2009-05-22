@@ -21,7 +21,7 @@
 
 from __future__ import division
 
-standard_properties = ['name', 'long_name', 'short_name', 'reference', 'url', 'missing_values', 'data_source', 'label_names', 'missing_values']
+standard_properties = ['name', 'long_name', 'short_name', 'reference', 'url', 'missing_values', 'data_source', 'label_names', 'missing_values', 'value_types']
 
 def standard_classification_loader(name):
     def adddoc(f):
