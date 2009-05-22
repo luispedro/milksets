@@ -20,36 +20,20 @@
 #  THE SOFTWARE.
 
 from __future__ import division
-import numpy as np
-from os.path import dirname
-from ..utils import standard_properties, standard_classification_loader
 
-__all__ = ['load'] + standard_properties
+standard_properties = ['name', 'long_name', 'short_name', 'reference', 'url', 'missing_values', 'data_source', 'label_names', 'missing_values']
 
-name = 'Wine'
-short_name = 'Wine'
-long_name = 'UCI Wine'
-reference = '''\
-Forina, M. et al, PARVUS -
-An Extendible Package for Data Exploration, Classification and Correlation.
-Institute of Pharmaceutical and Food Analysis and Technologies, Via Brigata Salerno,
-16147 Genoa, Italy.
-'''
-url = 'http://archive.ics.uci.edu/ml/datasets/Wine'
-data_source = 'UCI'
-label_names = [1,2,3]
-missing_values = False
+def standard_classification_loader(name):
+    def adddoc(f):
+        f.__doc__ = '''\
+    features,labels = load()
 
-_winedatafile = dirname(__file__)+'/data/wine.data'
+    Load features and labels for dataset %s
 
-@standard_classification_loader(name)
-def load(force_contiguous=True):
-    data  = np.array([map(float,line.split(',')) for line in file(_winedatafile)])
-    labels = data[:,0] - 1 # Wine dataset is 1..3
-    features = data[:,1:]
-    if force_contiguous:
-        labels = labels.copy()
-        features = features.copy()
-    return features,labels
+    features will be a numpy array.
+    labels will be a numpy array of integer type
+    ''' % name
+        return f
+    return adddoc
 
-
+# vim: set ts=4 sts=4 sw=4 expandtab smartindent:
