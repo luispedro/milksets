@@ -19,6 +19,6 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-from .wine import load
+from .wine import *
 
 # vim: set ts=4 sts=4 sw=4 expandtab smartindent:
