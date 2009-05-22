@@ -6,6 +6,7 @@ from __future__ import division
 import numpy as np
 from os.path import dirname
 import gzip
+from ..vtypes import *
 from ..utils import standard_properties, standard_classification_loader
 
 __all__ = ['load'] + standard_properties
@@ -22,6 +23,9 @@ St. Louis, USA 1996.
 url = 'http://archive.ics.uci.edu/ml/datasets/Yeast'
 data_source = 'UCI'
 label_names = ['CYT', 'ERL', 'EXC', 'ME1', 'ME2', 'ME3', 'MIT', 'NUC', 'POX', 'VAC']
+value_types = [
+    continuous('_%s' % i) for i in xrange(8)
+    ]
 missing_values = False
 
 _datafile = dirname(__file__)+'/data/yeast.data.gz'
