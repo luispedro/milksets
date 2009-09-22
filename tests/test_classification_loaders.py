@@ -10,4 +10,5 @@ def test_classification_loaders():
         assert (features.std(0)**2).sum() > 1e-8
     yield test_loader, milksets.wine
     yield test_loader, milksets.yeast
+    yield test_loader, milksets.murphy_hela_slf7dna
 
