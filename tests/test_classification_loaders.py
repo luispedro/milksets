@@ -1,5 +1,6 @@
 import milksets.wine
 import milksets.yeast
+import milksets.german
 
 def test_classification_loaders():
     def test_loader(module):
@@ -11,4 +12,5 @@ def test_classification_loaders():
     yield test_loader, milksets.wine
     yield test_loader, milksets.yeast
     yield test_loader, milksets.murphy_hela_slf7dna
+    yield test_loader, milksets.german
 

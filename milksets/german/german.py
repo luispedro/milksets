@@ -37,12 +37,15 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Iris dataset."""
-
+import numpy as np
+from ..vtypes import continuous
+from ..utils import standard_properties, standard_classification_loader
 __docformat__ = 'restructuredtext'
 
 COPYRIGHT   = """This is public domain. """
-TITLE       = "German Dataset"
+name = "German Dataset"
+short_name = "German Dataset"
+url = 'http://www.liacc.up.pt/ML/old/statlog/datasets.html'
 SOURCE      = """
 http://www.liacc.up.pt/ML/old/statlog/datasets.html
 
@@ -61,14 +64,10 @@ cannot cope with categorical variables. Several attributes that are ordered
 categorical (such as attribute 17) have been coded as integer. This was the
 form used by StatLog. 
 
-Here (scikits), only the numeric datasets are provided.
+Here (milksets), only the numeric datasets are provided.
 """
 
-DESCRSHORT  = """"""
-
-DESCRLONG   = """"""
-
-NOTE        = """
+notes = """
 Number of Instances: 1000. 700 for class 0 (good credit) and 300 for class 1
 (bad credit).
 
@@ -76,8 +75,10 @@ Number of Attributes: 24.
 
 label: 0 for good credit, +1 for bad credit
 """
+label_names = ['good_credit', 'bad_credit']
 
-def load():
+@standard_classification_loader(name)
+def load(force_contiguous=True):
     """load the german data and returns them.
     
     :returns:
@@ -91,18 +92,16 @@ def load():
     import pickle
     import gzip
     from os.path import dirname, join
-    feat,label = pickle.load(gzip.GzipFile(join(dirname(__file__), 'german.pp.gz')))
-    data = {}
-    # Create the data
-    data['data'] = numpy.array([[float(j) for j in f] for f in feat.values()]).T
-    # Create the label
-    data['label'] = numpy.array([numpy.int(i) for i in label], numpy.int)
-    data['label'][data['label'] == -1] = 0
-    # Create the class
-    classes = ['good credit', 'bad credit']
-    data['class'] = numpy.empty(2, 'S%d' % numpy.max([len(i) for i in classes]))
-    data['class'][0] = 'good credit'
-    data['class'][1] = 'bad credit'
-    #data['data'] = numpy.core.records.fromrecords(data['data'])
-    
-    return data
+    features,labels = pickle.load(gzip.GzipFile(join(dirname(__file__), 'german.pp.gz')))
+    featnames = features.keys()
+    featnames.sort()
+    nfeatures = []
+    for k in featnames:
+        nfeatures.append(map(float,features[k]))
+    nfeatures = np.array(nfeatures)
+    features = nfeatures.T
+    if force_contiguous:
+        features = features.copy()
+    labels = np.array([(lab == '+1') for lab in labels])
+    labels = labels.astype(np.int)
+    return features,labels
