@@ -38,7 +38,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import numpy as np
-from ..vtypes import continuous
+from ..vtypes import integer
 from ..utils import standard_properties, standard_classification_loader
 __docformat__ = 'restructuredtext'
 
@@ -76,6 +76,13 @@ Number of Attributes: 24.
 label: 0 for good credit, +1 for bad credit
 """
 label_names = ['good_credit', 'bad_credit']
+missing_values = False
+value_types = [
+    # FIXME
+    # This is wrong! Not all outputs are integers (some are categorical),
+    # but the above does not give enough information to know which features are what.
+    integer('feat%s' % (i+1)) for i in xrange(24)
+    ]
 
 @standard_classification_loader(name)
 def load(force_contiguous=True):
