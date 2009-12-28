@@ -20,7 +20,6 @@
 #  THE SOFTWARE.
 
 from __future__ import division
-from glob import glob
 try:
     from setuptools import *
 except:
@@ -37,10 +36,12 @@ if 'tests' in packages: packages.remove('tests')
 package_dir = {
     'milksets.wine': 'milksets/wine',
     'milksets.murphy_hela_slf7dna': 'milksets/murphy_hela_slf7dna',
+    'milksets.yeast': 'milksets/yeast',
     }
 package_data = {
     'milksets.wine': ['data/wine.*'],
     'milksets.murphy_hela_slf7dna' : ['data/murphylab.*'],
+    'milksets.yeast' : ['data/yeast.*'],
     }
 
 setup(name = 'milksets',
