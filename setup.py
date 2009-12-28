@@ -34,8 +34,14 @@ On linux, the package is often called python-setuptools'''
 
 packages = find_packages()
 if 'tests' in packages: packages.remove('tests')
-package_dir = {'milksets.wine': 'milksets/wine'}
-package_data = {'milksets.wine': ['data/wine.*']}
+package_dir = {
+    'milksets.wine': 'milksets/wine',
+    'milksets.murphy_hela_slf7dna': 'milksets/murphy_hela_slf7dna',
+    }
+package_data = {
+    'milksets.wine': ['data/wine.*'],
+    'milksets.murphy_hela_slf7dna' : ['data/murphylab.*'],
+    }
 
 setup(name = 'milksets',
       version = '0.1',
