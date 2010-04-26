@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2009-2010, Luis Pedro Coelho <lpc@cmu.edu>
+# vim: set ts=4 sts=4 sw=4 expandtab smartindent:
 # Software Distributed under the MIT License
 
 '''
@@ -12,6 +13,7 @@ vtype
   |     |-ordinal
   |     |   |- ordinalrange
   |     |    - boolean
+  |     |    - integer
   |      -continuous
    - categorical
        - boolean
@@ -40,6 +42,9 @@ class ordinalrange(ordinal):
         self.max = max
         self.min = min
 
+class integer(ordinal):
+    pass
+
 class categorical(vtype):
     def __init__(self,name, categories):
         vtype.__init__(self,name)
@@ -50,4 +55,3 @@ class boolean(categorical, ordinal):
         vtype.__init__(self,name)
 
 
-# vim: set ts=4 sts=4 sw=4 expandtab smartindent:
