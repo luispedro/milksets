@@ -29,6 +29,7 @@ setuptools not found.
 On linux, the package is often called python-setuptools'''
     from sys import exit
     exit(1)
+execfile('milksets/milksets_version.py')
 
 
 packages = find_packages()
@@ -45,7 +46,7 @@ package_data = {
     }
 
 setup(name = 'milksets',
-      version = '0.1',
+      version = __version__,
       description = 'Milk sets: Machine Learning Datasets',
       author = 'Luis Pedro Coelho',
       author_email = 'lpc@cmu.edu',
