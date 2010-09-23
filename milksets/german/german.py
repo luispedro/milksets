@@ -99,7 +99,7 @@ def load(force_contiguous=True):
     import pickle
     import gzip
     from os.path import dirname, join
-    features,labels = pickle.load(gzip.GzipFile(join(dirname(__file__), 'german.pp.gz')))
+    features,labels = pickle.load(gzip.GzipFile(join(dirname(__file__), 'data', 'german.pp.gz')))
     featnames = features.keys()
     featnames.sort()
     nfeatures = []
