@@ -50,6 +50,7 @@ _winedatafile = dirname(__file__)+'/data/wine.data'
 def load(force_contiguous=True):
     data  = np.array([map(float,line.split(',')) for line in file(_winedatafile)])
     labels = data[:,0] - 1 # Wine dataset is 1..3
+    labels = labels.astype(int)
     features = data[:,1:]
     if force_contiguous:
         labels = labels.copy()
