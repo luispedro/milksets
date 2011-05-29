@@ -1,1 +1,7 @@
 include README.rst
+include milksets/abalone/data/*
+include milksets/census/data/*
+include milksets/german/data/*
+include milksets/murphy_hela_slf7dna/data/*
+include milksets/wine/data/*
+include milksets/yeast/data/*
