@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2009-2010, Luis Pedro Coelho <lpc@cmu.edu>
+# Copyright (C) 2009-2010, Luis Pedro Coelho <luis@luispedro.org>
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ setup(name = 'milksets',
       version = __version__,
       description = 'Milk sets: Machine Learning Datasets',
       author = 'Luis Pedro Coelho',
-      author_email = 'lpc@cmu.edu',
+      author_email = 'luis@luispedro.org',
       url = 'http://luispedro.org/software/milksets/',
       packages = packages,
       package_dir = package_dir,
