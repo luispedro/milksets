@@ -3,6 +3,7 @@ import milksets.yeast
 import milksets.murphy_hela_slf7dna
 import milksets.german
 import milksets.page_blocks
+import milksets.iris
 
 def test_classification_loaders():
     def test_loader(module):
@@ -16,4 +17,5 @@ def test_classification_loaders():
     yield test_loader, milksets.murphy_hela_slf7dna
     yield test_loader, milksets.german
     yield test_loader, milksets.page_blocks
+    yield test_loader, milksets.iris
 

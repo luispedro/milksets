@@ -1,0 +1,4 @@
+Version 0.1.3+
+	* Add classic Iris dataset
+	* Add scene classification dataset
+	* Add page_blocks dataset
