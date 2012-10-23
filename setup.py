@@ -39,12 +39,14 @@ package_dir = {
     'milksets.murphy_hela_slf7dna': 'milksets/murphy_hela_slf7dna',
     'milksets.yeast': 'milksets/yeast',
     'milksets.german': 'milksets/german',
+    'milksets.iris': 'milksets/iris',
     }
 package_data = {
     'milksets.wine': ['data/wine.*'],
     'milksets.murphy_hela_slf7dna' : ['data/murphylab.*'],
     'milksets.yeast' : ['data/yeast.*'],
     'milksets.german' : ['data/german.*'],
+    'milksets.iris' : ['data/*'],
     }
 
 setup(name = 'milksets',
