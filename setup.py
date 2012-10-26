@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2009-2012, Luis Pedro Coelho <luis@luispedro.org>
-# 
+# vim: set ts=4 sts=4 sw=4 expandtab smartindent:
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
 #  in the Software without restriction, including without limitation the rights
 #  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 #  copies of the Software, and to permit persons to whom the Software is
 #  furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 #  all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,20 +35,21 @@ execfile('milksets/milksets_version.py')
 
 packages = find_packages()
 if 'tests' in packages: packages.remove('tests')
-package_dir = {
-    'milksets.wine': 'milksets/wine',
-    'milksets.murphy_hela_slf7dna': 'milksets/murphy_hela_slf7dna',
-    'milksets.yeast': 'milksets/yeast',
-    'milksets.german': 'milksets/german',
-    'milksets.iris': 'milksets/iris',
-    }
-package_data = {
-    'milksets.wine': ['data/wine.*'],
-    'milksets.murphy_hela_slf7dna' : ['data/murphylab.*'],
-    'milksets.yeast' : ['data/yeast.*'],
-    'milksets.german' : ['data/german.*'],
-    'milksets.iris' : ['data/*'],
-    }
+datasets = [
+    'wine',
+    'murphy_hela_slf7dna',
+    'yeast',
+    'german',
+    'iris',
+    'page_blocks',
+    ]
+
+package_dir = dict([
+    ('milksets.{0}'.format(d),'milksets/{0}'.format(d))
+        for d in datasets])
+package_data =  dict([
+    ('milksets.{0}'.format(d),['data/*'])
+        for d in datasets])
 
 setup(name = 'milksets',
       version = __version__,
@@ -62,4 +64,3 @@ setup(name = 'milksets',
       )
 
 
-# vim: set ts=4 sts=4 sw=4 expandtab smartindent:
