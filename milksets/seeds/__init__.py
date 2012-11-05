@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2009-2012, Luis Pedro Coelho <luis@luispedro.org>
+# Copyright (C) 2012, Luis Pedro Coelho <luis@luispedro.org>
 # vim: set ts=4 sts=4 sw=4 expandtab smartindent:
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,48 +20,4 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-from __future__ import division
-try:
-    from setuptools import *
-except:
-    print '''
-setuptools not found.
-
-On linux, the package is often called python-setuptools'''
-    from sys import exit
-    exit(1)
-execfile('milksets/milksets_version.py')
-
-
-packages = find_packages()
-if 'tests' in packages: packages.remove('tests')
-datasets = [
-    'wine',
-    'murphy_hela_slf7dna',
-    'yeast',
-    'german',
-    'iris',
-    'seeds',
-    'page_blocks',
-    ]
-
-package_dir = dict([
-    ('milksets.{0}'.format(d),'milksets/{0}'.format(d))
-        for d in datasets])
-package_data =  dict([
-    ('milksets.{0}'.format(d),['data/*'])
-        for d in datasets])
-
-setup(name = 'milksets',
-      version = __version__,
-      description = 'Milk sets: Machine Learning Datasets',
-      author = 'Luis Pedro Coelho',
-      author_email = 'luis@luispedro.org',
-      url = 'http://luispedro.org/software/milksets/',
-      packages = packages,
-      package_dir = package_dir,
-      package_data = package_data,
-      test_suite = 'nose.collector',
-      )
-
-
+from .seeds import *
