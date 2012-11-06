@@ -60,6 +60,7 @@ def load(force_contiguous=True):
     features = data[:,:-1]
     labels = data[:,-1]
     labels -= 1
+    labels = labels.astype(int)
     if force_contiguous:
         features = features.copy()
         labels = labels.copy()
