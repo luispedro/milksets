@@ -4,7 +4,7 @@ MILK SETS
 Machine Learning Datasets
 .........................
 
-Luis Pedro Coelho <lpc@cmu.edu>
+Luis Pedro Coelho <luis@luispedro.org>
 
 http://luispedro.org/software/milksets/
 
