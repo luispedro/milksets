@@ -24,13 +24,14 @@ from __future__ import division
 try:
     from setuptools import *
 except:
-    print '''
+    print('''
 setuptools not found.
 
-On linux, the package is often called python-setuptools'''
+On linux, the package is often called python-setuptools''')
     from sys import exit
     exit(1)
-execfile('milksets/milksets_version.py')
+exec(compile(open('milksets/milksets_version.py').read(),
+             'milksets/milksets_version.py', 'exec'))
 
 
 packages = find_packages()

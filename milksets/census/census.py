@@ -86,10 +86,10 @@ def load(force_contiguous=True):
                     cur.append('')
                 else:
                     if val not in type.categories:
-                        raise IOError, "milksets.census.load: Unexpected entry for category (got '%s' for category %s)" % (val,type.name)
+                        raise IOError("milksets.census.load: Unexpected entry for category (got '{}' for category {})".format(val,type.name))
                     cur.append(val)
             else:
-                raise IOError, "milksets.census.load: Cannot parse file"
+                raise IOError("milksets.census.load: Cannot parse file")
         features.append(cur)
         labels.append(label_names.index(items[-1]))
     features = np.array(features)

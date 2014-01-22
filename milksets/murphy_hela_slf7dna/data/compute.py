@@ -1,11 +1,11 @@
 import numpy as np
 MURPHYLAB_HELA2D_PATH = '/home/luispedro/work/murphylab/images/hela-2d/'
-print r'''\
+print(r'''\
 This is only to be run if you have got the Murphylab images installed at
-    %s
+    {}
 
 Otherwise, you will get errors!
-''' % MURPHYLAB_HELA2D_PATH
+'''.format(MURPHYLAB_HELA2D_PATH))
 import pyslic
 imgs = pyslic.image.io.dirtransversal.dirtransversal(MURPHYLAB_HELA2D_PATH)
 labels = np.array([img.label for img in imgs])
