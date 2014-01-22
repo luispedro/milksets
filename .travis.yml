@@ -7,12 +7,10 @@ virtualenv:
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq python-numpy libatlas-dev liblapack-dev gfortran
-    - sudo apt-get install -qq python-scipy
     - pip install numpy --quiet
-    - pip install scipy
 install:
     - pip install coveralls
-    - make debug
+    - python setup.py build --build-lib=.
 script:
     coverage run --source=milksets setup.py test
 after_success:
