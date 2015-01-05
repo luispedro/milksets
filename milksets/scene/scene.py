@@ -37,10 +37,10 @@ multi-label scene classification. Pattern Recognition, 37(9):1757-1771, 2004
 '''
 url = 'http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multilabel.html'
 data_source = 'LibSVM'
-label_names = range(6)
+label_names = [i for i in range(6)]
 missing_values = False
 value_types = [
-    continuous('_%s' % i) for i in xrange(294)
+    continuous('_{}'.format(i)) for i in range(294)
     ]
 
 @standard_classification_loader(name)
@@ -58,11 +58,11 @@ def _load_file(fname):
     labels = []
     features = []
     for line in bz2.BZ2File(fname):
-        tokens = line.strip().split(' ')
-        labels.append(map(int,tokens[0].split(',')))
+        tokens = line.strip().split(b' ')
+        labels.append(map(int,tokens[0].split(b',')))
         cur = np.zeros(294, float)
         for i,tok in enumerate(tokens[1:]):
-            index,val = tok.split(':')
+            index,val = tok.split(b':')
             assert int(index) == (i+1)
             cur[i] = val
         features.append(cur)

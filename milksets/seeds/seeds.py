@@ -54,7 +54,6 @@ value_types = [
 @standard_classification_loader(name)
 def load(force_contiguous=True):
     from bz2 import BZ2File
-    from string import lower
     base = dirname(__file__) + '/data/'
     data = np.loadtxt(base+'seeds_dataset.txt.gz')
     features = data[:,:-1]

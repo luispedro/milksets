@@ -1,2 +1,2 @@
-from milksets_version import __version__
+from .milksets_version import __version__
 

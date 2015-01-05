@@ -30,7 +30,7 @@ def category2index(features, types):
 
     output = np.empty(features.shape, dtype=storage_type(types))
     for i,f in enumerate(features):
-        for j,t,val in zip(xrange(len(f)),types, f):
+        for t,(j,val) in zip(types, enumerate(f)):
             if isinstance(t, categorical):
                 output[i,j] = (t.categories.index(val) if val else -1)
             else:

@@ -81,7 +81,7 @@ value_types = [
     # FIXME
     # This is wrong! Not all outputs are integers (some are categorical),
     # but the above does not give enough information to know which features are what.
-    integer('feat%s' % (i+1)) for i in xrange(24)
+    integer('feat{}'.format(i+1)) for i in range(24)
     ]
 
 @standard_classification_loader(name)
@@ -100,11 +100,11 @@ def load(force_contiguous=True):
     import gzip
     from os.path import dirname, join
     features,labels = pickle.load(gzip.GzipFile(join(dirname(__file__), 'data', 'german.pp.gz')))
-    featnames = features.keys()
+    featnames = list(features.keys())
     featnames.sort()
     nfeatures = []
     for k in featnames:
-        nfeatures.append(map(float,features[k]))
+        nfeatures.append(list(map(float,features[k])))
     nfeatures = np.array(nfeatures)
     features = nfeatures.T
     if force_contiguous:

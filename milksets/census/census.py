@@ -72,6 +72,7 @@ def load(force_contiguous=True):
     labels = []
     label_names = [' - 50000.\n',' 50000+.\n']
     for line in gzip.GzipFile(_datafile):
+        line = line.decode('utf-8')
         items = line.split(',')
         cur = []
         for type,val in zip(value_types,items[:-1]):

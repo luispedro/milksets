@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2012, Luis Pedro Coelho <luis@luispedro.org>
+# Copyright (C) 2012-2014, Luis Pedro Coelho <luis@luispedro.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,7 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-from __future__ import division
+
 import numpy as np
 from os.path import dirname
 from ..vtypes import continuous
@@ -50,18 +50,18 @@ value_types = [
 @standard_classification_loader(name)
 def load(force_contiguous=True):
     from bz2 import BZ2File
-    from string import lower
     base = dirname(__file__) + '/data/'
     features = []
     labels = []
-    low_label_names = map(lower, label_names)
+    low_label_names = [ell.lower() for ell in label_names]
     for line in BZ2File(base+'correct.data.bz2'):
+        line = line.decode('utf-8')
         tokens = line.strip().split(',')
         if len(tokens) < 4:
             break
-        features.append(np.array(map(float, tokens[:4])))
+        features.append(np.array(list(map(float, tokens[:4]))))
         name = tokens[4]
-        name = lower(name)
+        name = name.lower()
         name = name.replace('-', ' ')
         # The original names are in British English:
         name = name.replace('color', 'colour')

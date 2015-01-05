@@ -19,7 +19,7 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-from __future__ import division
+
 import numpy as np
 from os.path import dirname
 from ..vtypes import continuous
@@ -41,14 +41,14 @@ data_source = 'UCI'
 label_names = [1,2,3]
 missing_values = False
 value_types = [
-    continuous('_%s' % i) for i in xrange(13)
+    continuous('_{}'.format(i)) for i in range(13)
     ]
 
 _winedatafile = dirname(__file__)+'/data/wine.data'
 
 @standard_classification_loader(name)
 def load(force_contiguous=True):
-    data  = np.array([map(float,line.split(',')) for line in file(_winedatafile)])
+    data  = np.array([list(map(float,line.split(','))) for line in open(_winedatafile)])
     labels = data[:,0] - 1 # Wine dataset is 1..3
     labels = labels.astype(int)
     features = data[:,1:]

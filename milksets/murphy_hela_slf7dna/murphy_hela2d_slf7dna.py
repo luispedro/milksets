@@ -37,7 +37,7 @@ data_source = 'MurphyLab'
 label_names = ['dap', 'erdak', 'giant', 'gpp130', 'h4b4', 'mc151', 'nucle', 'phal', 'tfr', 'tubul']
 missing_values = False
 value_types = [
-    continuous('_%s' % i) for i in xrange(90)
+    continuous('_{}'.format(i)) for i in range(90)
     ]
 
 _datafile = dirname(__file__)+'/data/murphylab.npz'

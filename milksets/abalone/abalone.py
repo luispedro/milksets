@@ -39,7 +39,8 @@ _datafile = dirname(__file__)+'/data/abalone.data.gz'
 def load(force_contiguous=True):
     features = []
     labels = []
-    for line in gzip.GzipFile(_datafile):
+    for line in gzip.GzipFile(_datafile, 'rb'):
+        line = line.decode('utf-8')
         items = line.split(',')
         features.append(items[:-1])
         labels.append(int(items[-1].strip()))
