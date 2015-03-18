@@ -19,7 +19,7 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-from __future__ import division
+
 import numpy as np
 from os.path import dirname
 from ..vtypes import continuous
@@ -59,7 +59,7 @@ def _load_file(fname):
     features = []
     for line in bz2.BZ2File(fname):
         tokens = line.strip().split(b' ')
-        labels.append(map(int,tokens[0].split(b',')))
+        labels.append([int(t) for t in tokens[0].split(b',')])
         cur = np.zeros(294, float)
         for i,tok in enumerate(tokens[1:]):
             index,val = tok.split(b':')
