@@ -66,7 +66,7 @@ def category2boolarray(features, types):
             return len(t.categories)
         return 1
     nlen = sum(_lenfor(t) for t in types)
-    output = np.empty((len(features),nlen),storage_type(types))
+    output = np.zeros((len(features),nlen),storage_type(types))
     for i,f in enumerate(features):
         j = 0
         for t,val in zip(types, f):
