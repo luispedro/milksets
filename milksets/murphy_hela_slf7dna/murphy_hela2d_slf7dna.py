@@ -34,7 +34,7 @@ reference = '''\
 '''
 url = 'http://murphylab.cbi.cmu.edu/download'
 data_source = 'MurphyLab'
-label_names = ['dap', 'erdak', 'giant', 'gpp130', 'h4b4', 'mc151', 'nucle', 'phal', 'tfr', 'tubul']
+label_names = [b'dap', b'erdak', b'giant', b'gpp130', b'h4b4', b'mc151', b'nucle', b'phal', b'tfr', b'tubul']
 missing_values = False
 value_types = [
     continuous('_{}'.format(i)) for i in range(90)
